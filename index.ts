@@ -4,6 +4,7 @@ import { userAuth } from "./src/middleware/auth.middleware";
 import errorHandler from "./src/middleware/error.middleware";
 import authRoutes from "./src/routes/authRoutes";
 import userRoutes from "./src/routes/userRoutes";
+import companyRoutes from "./src/routes/companyRoutes";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use("/auth", authRoutes);
 app.use(userAuth);
 //Every route under this userAuth middleware is protected
 app.use("/users", userRoutes);
+app.use("/companies", companyRoutes);
 app.use(errorHandler);
 
 app.listen(PORT, () => {

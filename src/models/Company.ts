@@ -47,4 +47,4 @@ const companySchema = new Schema<ICompany>(
   { timestamps: true }
 );
 
-export const companies = model<ICompany>("companies", companySchema);
+export const Companies = model<ICompany>("companies", companySchema);
