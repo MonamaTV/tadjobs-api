@@ -4,15 +4,11 @@ import { Users } from "../models/User";
 import bcrypt from "bcrypt";
 import { assignToken } from "../utils/jwt";
 
-export const loginUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const email = req.body?.email;
     const password = req.body?.password;
-    if (!password || !email) {
+    if (!email || !password) {
       throw new AppError(400, "Email or password is incorrect");
     }
 
@@ -37,11 +33,7 @@ export const loginUser = async (
     next(error);
   }
 };
-export const registerUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const registerUser = async (req: Request, res: Response, next: NextFunction) => {
   //
   try {
     const email = req.body?.email;
@@ -81,17 +73,10 @@ export const registerUser = async (
   }
 };
 
-export const getUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const getUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { _id, email } = req.user;
-    const user = await Users.findOne(
-      { _id, email },
-      { email: 1, name: 1, active: 1 }
-    );
+    const user = await Users.findOne({ _id, email }, { email: 1, name: 1, active: 1 });
     if (!user) {
       throw new AppError(401, "User does not exist");
     }
@@ -104,11 +89,7 @@ export const getUser = async (
     next(error);
   }
 };
-export const updateUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { _id, email } = req.user;
     const name = req.body.name;
@@ -139,11 +120,7 @@ export const updateUser = async (
     next(error);
   }
 };
-export const deactivateUser = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const deactivateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { _id, email } = req.user;
     const deactivated = await Users.findOneAndUpdate(

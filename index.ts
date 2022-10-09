@@ -14,7 +14,6 @@ app.get("/", async (req: Request, res: Response) => {});
 app.use(express.json());
 app.use("/auth", authRoutes);
 //Error handler
-
 app.use(userAuth);
 //Every route under this userAuth middleware is protected
 app.use("/users", userRoutes);

@@ -56,4 +56,4 @@ const jobSchema = new Schema<IJob>(
   { timestamps: true }
 );
 
-export const jobs = model<IJob>("jobs", jobSchema);
+export const Jobs = model<IJob>("jobs", jobSchema);

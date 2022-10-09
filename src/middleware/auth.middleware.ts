@@ -3,11 +3,7 @@ import { Users } from "../models/User";
 import { verifyToken } from "../utils/jwt";
 import { AppError } from "./error.middleware";
 
-export const userAuth = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const userAuth = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const header = req.headers?.authorization; //Bearer eufoaf
     if (!header || !header?.startsWith("Bearer ")) {

@@ -11,15 +11,9 @@ export class AppError extends Error {
   }
 }
 
-const errorHandler: ErrorRequestHandler = (
-  error: any | AppError,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+const errorHandler: ErrorRequestHandler = (error: any | AppError, req: Request, res: Response, next: NextFunction) => {
   const code = error.code || 500;
   const message = error.message;
-  console.log(error);
 
   if (!(error instanceof AppError)) {
     return res.status(code).send({
